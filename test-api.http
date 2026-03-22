@@ -1,0 +1,39 @@
+### 1. Poblar la Base de Datos Inicial 
+# Ejecuta este POST primero para generar un Alumno, un Profesor, un Examen y una Práctica en tu DB vacía.
+POST http://localhost:3000/evaluacion/seed
+Content-Type: application/json
+
+{}
+
+### 
+
+### 2. Calificar una Práctica (N:M Alumno-Practica)
+# Asignamos una nota de 8.5 al alumno ID:1 sobre la práctica ID:1
+POST http://localhost:3000/evaluacion/practica
+Content-Type: application/json
+
+{
+    "id_alumno": 1,
+    "id_practica": 1,
+    "fecha": "2026-03-24",
+    "nota": 8.5
+}
+
+###
+
+### 3. Calificar un Examen Teórico (N:M Alumno-ExamenTeorico)
+# Asignamos una nota de 9.0 al alumno ID:1 sobre el examen ID:1
+POST http://localhost:3000/evaluacion/examen
+Content-Type: application/json
+
+{
+    "id_alumno": 1,
+    "id_examen_teorico": 1,
+    "nota": 9.0
+}
+
+###
+
+### 4. Consultar Historial de Evaluación de un Alumno
+# Retorna todos los datos del alumno y sus notas de exámenes y prácticas
+GET http://localhost:3000/evaluacion/alumno/1

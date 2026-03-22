@@ -6,6 +6,11 @@ import { CalificarPracticaDto, CalificarExamenDto } from './dto/evaluacion.dto';
 export class EvaluacionController {
   constructor(private readonly evaluacionService: EvaluacionService) {}
 
+  @Post('seed')
+  seedData() {
+    return this.evaluacionService.seedData();
+  }
+
   @Post('practica')
   calificarPractica(@Body() dto: CalificarPracticaDto) {
     return this.evaluacionService.calificarPractica(dto);
