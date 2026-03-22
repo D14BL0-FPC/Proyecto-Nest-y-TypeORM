@@ -14,12 +14,8 @@ import { EvaluacionModule } from './evaluacion/evaluacion.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get<string>('DB_HOST', 'localhost'),
-        port: configService.get<number>('DB_PORT', 5432),
-        username: configService.get<string>('DB_USER', 'admin'),
-        password: configService.get<string>('DB_PASSWORD', 'password'),
-        database: configService.get<string>('DB_NAME', 'evaluacion_db'),
+        type: 'sqlite',
+        database: 'evaluacion.sqlite',
         autoLoadEntities: true,
         synchronize: true, // Only for development!
       }),
